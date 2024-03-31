@@ -1,11 +1,12 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../../config/db');
+const User = require('./User');
 
 /**
  * @swagger
  * components:
  *   schemas:
- *     Transaccion:
+ *     Transaction:
  *       type: object
  *       required:
  *         - id
@@ -19,28 +20,31 @@ const sequelize = require('../../config/db');
  *         id:
  *           type: integer
  *           description: El identificador único de la transacción.
- *         RFC:
+ *         user_id:
+ *           type: integer
+ *           description: El identificador único del usuario asociado a la transacción.
+ *         rfc:
  *           type: string
  *           description: El RFC del usuario asociado a la transacción.
- *         folio:
+ *         invoice:
  *           type: string
  *           description: El folio de la transacción.
- *         fechaDeRetiro:
+ *         withdrawalDate:
  *           type: string
  *           format: date
  *           description: La fecha de retiro de la transacción.
- *         estatus:
+ *         status:
  *           type: string
  *           enum:
  *             - PENDING
  *             - FAILED
  *             - COMPLETED
  *           description: El estado de la transacción.
- *         monto:
+ *         amount:
  *           type: number
  *           format: double
  *           description: El monto de la transacción.
- *         comision:
+ *         commission:
  *           type: number
  *           format: double
  *           description: La comisión de la transacción.
@@ -75,27 +79,35 @@ Transaccion.init({
         primaryKey: true,
         autoIncrement: true
     },
-    RFC: {
+    user_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: User,
+            key: 'id'
+        }
+    },
+    rfc: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    folio: {
+    invoice: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    fechaDeRetiro: {
+    withdrawalDate: {
         type: DataTypes.DATEONLY,
         allowNull: false
     },
-    estatus: {
+    status: {
         type: DataTypes.ENUM('PENDING', 'FAILED', 'COMPLETED'),
         allowNull: false
     },
-    monto: {
+    amount: {
         type: DataTypes.DECIMAL(10, 2),
         allowNull: false
     },
-    comision: {
+    commission: {
         type: DataTypes.DECIMAL(10, 2),
         allowNull: false
     },
@@ -106,7 +118,7 @@ Transaccion.init({
     },
     updatedAt: {
         type: DataTypes.DATE,
-        allowNull: false
+        allowNull: true
     },
     deletedAt: {
         type: DataTypes.DATE

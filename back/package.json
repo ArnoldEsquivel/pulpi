@@ -4,7 +4,8 @@
   "description": "This is an app to creat, filter, update and get a fake transactions in a rest api with Node Js and show them in a SPA with React Js",
   "main": "./back/server.js",
   "scripts": {
-    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "dev": "nodemon server.js --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -17,14 +18,15 @@
   "author": "@ArnoldEsquivel",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^29.7.0"
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.0"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "express-validator": "^7.0.1",
     "mysql2": "^3.9.3",
-    "nodemon": "^3.1.0",
     "sequelize": "^6.37.1",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.0"

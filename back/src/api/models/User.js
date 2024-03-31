@@ -5,7 +5,7 @@ const sequelize = require('../../config/db');
  * @swagger
  * components:
  *   schemas:
- *     Usuario:
+ *     User:
  *       type: object
  *       required:
  *         - id
@@ -17,13 +17,13 @@ const sequelize = require('../../config/db');
  *         id:
  *           type: integer
  *           description: El identificador único del usuario.
- *         RFC:
+ *         rfc:
  *           type: string
  *           description: El Registro Federal de Contribuyentes del usuario.
- *         nombre:
+ *         name:
  *           type: string
  *           description: El nombre del usuario.
- *         apellidos:
+ *         last_name:
  *           type: string
  *           description: Los apellidos del usuario.
  *         status:
@@ -64,15 +64,15 @@ Usuario.init({
         primaryKey: true,
         autoIncrement: true
     },
-    RFC: {
+    rfc: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    nombre: {
+    name: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    apellidos: {
+    last_name: {
         type: DataTypes.STRING,
         allowNull: false
     },
@@ -87,7 +87,7 @@ Usuario.init({
     },
     updatedAt: {
         type: DataTypes.DATE,
-        allowNull: false
+        allowNull: true
     },
     deletedAt: {
         type: DataTypes.DATE
