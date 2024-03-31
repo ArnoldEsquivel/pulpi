@@ -1,6 +1,6 @@
 const { check, validationResult } = require('express-validator');
 
-exports.validateTransaction = [
+exports.createTransaction = [
     check('user_id')
         .isInt().withMessage('The user ID must be an integer.')
         .not().isEmpty().withMessage('The user ID is required.'),

@@ -16,17 +16,9 @@ exports.getAll = async (filters) => {
         };
     }
 
-    if (filters.rfc) {
-        queryOptions.where.rfc = filters.rfc;
-    }
-
-    if (filters.invoice) {
-        queryOptions.where.invoice = filters.invoice;
-    }
-
-    if (filters.status) {
-        queryOptions.where.status = filters.status;
-    }
+    if (filters.rfc) queryOptions.where.rfc = filters.rfc;
+    if (filters.invoice) queryOptions.where.invoice = filters.invoice;
+    if (filters.status) queryOptions.where.status = filters.status;
 
     const transactions = await Transaction.findAll(queryOptions);
     return transactions;
@@ -69,6 +61,20 @@ exports.create = async (transactionData) => {
     const transaction = await Transaction.create(transactionData);
     return transaction;
 };
+
+exports.update = async (transactionId, updates) => {
+    const transaction = await Transaction.findByPk(transactionId);
+
+    if (!transaction) throw new Error('Transaction not found');
+
+    // Here we verify if the transaction is in PENDING status
+    if (transaction.status !== 'PENDING') throw new Error('Only transactions with PENDING status can be updated');
+
+    await transaction.update(updates);
+
+    return transaction;
+};
+
 
 exports.delete = async (transactionId) => {
     const transaction = await Transaction.findByPk(transactionId);

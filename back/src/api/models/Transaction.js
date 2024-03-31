@@ -104,11 +104,11 @@ Transaccion.init({
         allowNull: false
     },
     amount: {
-        type: DataTypes.DECIMAL(10, 2),
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     commission: {
-        type: DataTypes.DECIMAL(10, 2),
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     createdAt: {

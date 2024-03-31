@@ -27,6 +27,15 @@ exports.createTransaction = async (req, res) => {
     }
 };
 
+exports.updateTransaction = async (req, res) => {
+    try {
+        const transaction = await transactionService.update(req.params.id, req.body);
+        res.json(transaction);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+}
+
 exports.deleteTransaction = async (req, res) => {
     try {
         await transactionService.delete(req.params.id);
