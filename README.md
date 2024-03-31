@@ -26,12 +26,20 @@ Development proceeded iteratively, focusing on one endpoint at a time. For each 
 #### Documentation and Testing
 Throughout the development process, I maintained comprehensive documentation and conducted extensive testing. This approach not only streamlined the development process but also ensured that each part of the application functioned as intended.
 
+The unit tests simulate the expected behavior of the user controllers when services respond successfully as well as with errors. Each test ensures that:
+- The services are called correctly.
+- The correct responses are sent to the client.
+- Errors are handled appropriately.
+
+These tests specifically cover the routes, verifying the integration and proper functioning of the controllers with the services, and ensuring the reliability of the endpoint responses.
+
+
 #### Conclusion
 The meticulous planning, strategic architectural choices, and methodical development approach reflect my commitment to delivering a robust and well-structured backend solution. This process underscores the importance of a well-thought-out design and development strategy in creating efficient, maintainable, and scalable software.
 
 ***
 
-## Project Structure
+## Backend Structure
 
 ### `src/api/controllers`
 The `controllers` directory contains the controller files, which are responsible for handling incoming HTTP requests and returning responses to the client. The controllers delegate business logic to the services and send back the service's response to the client.
