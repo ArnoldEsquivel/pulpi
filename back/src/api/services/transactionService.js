@@ -1,9 +1,35 @@
+const { Op } = require('sequelize');
 const Transaction = require('../models/Transaction');
 const { User } = require('../models/index')
 
-exports.getAll = async () => {
-    // Agregar el filtrado
-    return Transaction.findAll();
+exports.getAll = async (filters) => {
+    // Here we define the query options
+    let queryOptions = {
+        where: {},
+        paranoid: filters.includeDeleted ? false : true,
+    };
+
+    // On this IF we add the filters to the query options if they are present
+    if (filters.withdrawalDateStart && filters.withdrawalDateEnd) {
+        queryOptions.where.withdrawalDate = {
+            [Op.between]: [filters.withdrawalDateStart, filters.withdrawalDateEnd],
+        };
+    }
+
+    if (filters.rfc) {
+        queryOptions.where.rfc = filters.rfc;
+    }
+
+    if (filters.invoice) {
+        queryOptions.where.invoice = filters.invoice;
+    }
+
+    if (filters.status) {
+        queryOptions.where.status = filters.status;
+    }
+
+    const transactions = await Transaction.findAll(queryOptions);
+    return transactions;
 };
 
 exports.getAllWithUsers = async () => {

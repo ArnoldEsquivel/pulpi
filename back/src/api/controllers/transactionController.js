@@ -2,7 +2,7 @@ const transactionService = require('../services/transactionService');
 
 exports.getAllTransactions = async (req, res) => {
     try {
-        const transactions = await transactionService.getAll();
+        const transactions = await transactionService.getAll(req.query);
         res.json(transactions);
     } catch (error) {
         res.status(500).send(error.message);
