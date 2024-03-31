@@ -1,0 +1,115 @@
+components:
+  schemas:
+    Transaction:
+      type: object
+      required:
+        - id
+        - user_id
+        - rfc
+        - invoice
+        - withdrawalDate
+        - status
+        - amount
+        - commission
+      properties:
+        id:
+          type: integer
+          description: The unique identifier of the transaction.
+        user_id:
+          type: integer
+          description: The unique identifier of the user associated with the transaction.
+        rfc:
+          type: string
+          description: The RFC of the user associated with the transaction.
+        invoice:
+          type: string
+          description: The invoice number of the transaction.
+        withdrawalDate:
+          type: string
+          format: date
+          description: The withdrawal date of the transaction.
+        status:
+          type: string
+          enum:
+            - PENDING
+            - FAILED
+            - COMPLETED
+          description: The status of the transaction.
+        amount:
+          type: number
+          format: double
+          description: The amount of the transaction.
+        commission:
+          type: number
+          format: double
+          description: The commission of the transaction.
+        createdAt:
+          type: string
+          format: date-time
+          description: The creation date of the record.
+        updatedAt:
+          type: string
+          format: date-time
+          description: The last update date of the record.
+        deletedAt:
+          type: string
+          format: date-time
+          nullable: true
+          description: The deletion date of the record (only if it is a soft delete).
+      example:
+        user_id: 2
+        rfc: "FFAL920101IT1"
+        withdrawalDate: "2024-03-01"
+        status: "PENDING"
+        amount: 100.00
+        commission: 10.00
+
+    User:
+      type: object
+      required:
+        - id
+        - rfc
+        - name
+        - last_name
+        - status
+      properties:
+        id:
+          type: integer
+          description: The unique identifier of the user.
+        rfc:
+          type: string
+          description: The Federal Taxpayers Registry code of the user.
+        name:
+          type: string
+          description: The name of the user.
+        last_name:
+          type: string
+          description: The last name of the user.
+        status:
+          type: string
+          enum:
+            - ACTIVE
+            - LOCKED
+          description: The status of the user, can be active or locked.
+        createdAt:
+          type: string
+          format: date-time
+          description: The creation date of the user's record.
+        updatedAt:
+          type: string
+          format: date-time
+          description: The last update date of the user's record.
+        deletedAt:
+          type: string
+          format: date-time
+          nullable: true
+          description: The deletion date of the user's record, if applicable.
+      example:
+        id: 1
+        RFC: "FFAL920101HDFABC01"
+        name: "Juan"
+        last_name: "Pérez López"
+        status: "ACTIVE"
+        createdAt: "2024-01-01T10:00:00.000Z"
+        updatedAt: "2024-01-02T15:00:00.000Z"
+        deletedAt: null
