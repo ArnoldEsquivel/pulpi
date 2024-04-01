@@ -1,7 +1,124 @@
-# Backend Project Structure Overview
+# Technical Assessment for Pulpi - Repository Overview
+
+Welcome to the repository containing the Frontend and Backend projects for the technical assessment by Pulpi. This comprehensive repository is structured to include distinct directories for each segment of the application, allowing for clear separation of concerns and streamlined project management.
+
+In the following sections, you will find detailed documentation for both the Frontend and Backend parts of the project. Each section aims to provide a clear understanding of the architecture, setup, and functionality encapsulated within the respective codebases.
+
+Scroll down to explore the intricacies of each project and gain insights into the development process and decisions made throughout the creation of the application.
+
+### [Frontend Project Documentation](#frontend-structure-overview)
+### [Backend Project Documentation](#backend-structure-overview)
+
+## Running the Projects
+
+To get both the Frontend and Backend up and running, you'll need to install their respective dependencies and start their development servers. Follow the steps below for each project:
+
+### In both proyects are the same steps 
+1. Navigate to the backend or frontend project directory:
+
+   ```sh
+   cd back/
+   ```
+   or
+   ```sh
+   cd front/
+   ```
+2. Install the necessary dependencies:
+   ```sh
+   npm install
+   ```
+3. Start the development server
+   ```sh
+   npm run dev
+   ```
+> Make sure both development servers are running to enable proper communication between the frontend and backend services.
+
+> **Important:** Before running the backend project, ensure that you have the MySQL service running on your local machine. Additionally, you must have a schema named `pulpi` created within your MySQL instance. The backend is configured to automatically generate the necessary tables within this schema upon launch.
+
+***
+# Frontend Structure Overview
 
 ## Introduction
-Hello, my name is Arnold Esquivel. In this backend project, I have implemented Node.js with a dependency injection pattern to abstract the business logic, aiming for long-term maintainability and scalability. Below is an overview of the project structure, explaining the purpose of each directory and how they contribute to the application's architecture.
+
+This is the frontend counterpart of the backend project previously outlined. The frontend is crafted with React, leveraging the power of SCSS modules for styling and Material-UI components for a polished interface. This document details the structure and methodologies adopted throughout the development process.
+
+### Development Process Overview
+
+#### Analyzing Views
+
+The development kicked off with an analysis of the required views, delineating the visual aspects and user interaction points crucial for a coherent user experience.
+
+#### Component Analysis
+
+Following the view analysis, I deconstructed the interface into reusable components. This modular approach facilitates maintainability and promotes a DRY (Don't Repeat Yourself) coding standard.
+
+#### Hooks and HOC Implementation
+
+For state management and side effects, custom hooks were implemented, including `useTransactions`, which is optimized with debouncing to minimize unnecessary backend requests. A High Order Component (HOC) for filtering transactions was also created to enhance user interaction with the data table.
+
+#### Styling with SCSS Modules
+
+SCSS modules were introduced to manage component-level styles efficiently, preventing style conflicts and fostering a scalable styling architecture.
+
+#### Utilizing Material-UI Components
+
+Material-UI was chosen for its comprehensive suite of ready-to-use components, which provide a consistent look and feel and speed up the development process.
+
+#### Debouncing in `useTransactions` Hook
+
+To optimize the user experience and reduce the load on the backend, a debouncer was integrated within the `useTransactions` hook, delaying API calls until the user has ceased typing for a specified duration.
+
+#### API Documentation Access
+
+A button was incorporated within the interface to grant users easy access to the API documentation, ensuring they have all the necessary information to interact with the backend services effectively.
+
+## Frontend Structure
+
+### `src/components`
+
+This directory contains all React components that make up the user interface. Each component is styled using SCSS modules and leverages Material-UI components where applicable.
+
+### `src/hooks`
+
+Custom React hooks are located in this directory. They encapsulate and manage stateful logic and side effects, such as data fetching with `useTransactions`.
+
+### `src/pages`
+
+The `pages` folder includes the different views that the user can navigate to in the application. Each page is composed of various components and hooks to assemble the complete UI for that route.
+
+### `src/styles`
+
+Global styles and SCSS variable definitions reside in the `styles` directory, providing a centralized location for styling constants like colors, fonts, and breakpoints.
+
+### `src/utils`
+
+Utility functions and common interfaces used across the application are defined within the `utils` folder. These utilities help keep the codebase DRY and maintainable.
+
+### `src/hocs`
+
+The `hocs` directory contains High Order Components that augment other components, such as `FilterTransactions`, which provides filtering capabilities to the transactions table.
+
+### `src/assets`
+
+Static assets like images and icons used in the application are stored in this folder.
+
+> #### Home screen interface
+![Home](./img/home.jpeg)
+
+> #### Create Transaction
+![Create](./img/crear.jpeg)
+
+> #### Update Transaction
+![Update](./img/actualizar.jpeg)
+
+> #### Delete Transaction
+![Delete](./img/eliminar.jpeg)
+
+***
+
+# Backend Structure Overview
+## Introduction
+In this backend project, I have implemented Node.js with a dependency injection pattern to abstract the business logic, aiming for long-term maintainability and scalability. Below is an overview of the project structure, explaining the purpose of each directory and how they contribute to the application's architecture.
 
 ## Development Process Overview
 
@@ -68,3 +185,6 @@ DTOs (Data Transfer Objects) reside in the `dtos` folder. They are used to valid
 ## Swagger Documentation
 This project has been thoroughly documented using Swagger to describe its RESTful API. Swagger documentation helps both developers and users understand the capabilities of the API, providing clear instructions and details about the API's functions.
 
+> #### Api Interface Reference
+
+![Swagger](./img/swagger.jpeg)
