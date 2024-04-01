@@ -6,8 +6,25 @@ In the following sections, you will find detailed documentation for both the Fro
 
 Scroll down to explore the intricacies of each project and gain insights into the development process and decisions made throughout the creation of the application.
 
-### [Frontend Project Documentation](#frontend-structure-overview)
-### [Backend Project Documentation](#backend-structure-overview)
+### [Frontend Documentation](#frontend-structure-overview) - [Backend Documentation](#backend-structure-overview)
+
+***
+
+## Postman Collection for API Testing
+For convenience and to facilitate testing of the API, a Postman collection has been provided. This collection includes predefined requests for all the available endpoints, making it easier to test and interact with the API.
+
+You can find the Postman collection file at `./pulpi.postman_collection.json` within the repository. To use it, simply import this file into Postman.
+
+### Importing the Collection into Postman
+1. Open Postman.
+2. Click on the `Import` button located at the top left corner of the Postman interface.
+3. Choose the `File` tab in the dialog that appears.
+4. Click on the `Upload Files` button and navigate to the location of `pulpi.postman_collection.json`.
+5. Select the file and click `Open` to import the collection into Postman.
+
+After importing, you will have access to all the configured requests and can start testing the API immediately.
+
+***
 
 ## Running the Projects
 
