@@ -115,7 +115,7 @@ const FilterTransactions = (ComponenteTabla: React.ComponentType<TableTransactio
                         InputLabelProps={{ shrink: true }}
                         sx={{ width: '10rem' }}
                     />
-                    <FormControl>
+                    <FormControl size='small' sx={{ width: '9rem' }}>
                         <InputLabel>Estatus</InputLabel>
                         <Select
                             size='small'
@@ -123,7 +123,6 @@ const FilterTransactions = (ComponenteTabla: React.ComponentType<TableTransactio
                             value={filtro.status}
                             onChange={handleSelectChange}
                             label="Estatus"
-                            sx={{ width: '9rem' }}
                         >
                             <MenuItem value="PENDING">Pendiente</MenuItem>
                             <MenuItem value="FAILED">Fallida</MenuItem>

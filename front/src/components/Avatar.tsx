@@ -29,6 +29,7 @@ export default function BasicMenu() {
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
+                className={styles.button}
             >
                 Contact
             </Button>
@@ -42,15 +43,24 @@ export default function BasicMenu() {
                 }}
                 className={styles.menu}
             >
-                <MenuItem onClick={handleClose} className={styles.menu_item}>
+                <MenuItem
+                    onClick={() => window.open('https://github.com/ArnoldEsquivel', '_blank')}
+                    className={styles.menu_item}
+                >
                     <GitHubIcon className={styles.icon} sx={{ color: 'black' }} />
                     GitHub
                 </MenuItem>
-                <MenuItem onClick={handleClose} className={styles.menu_item}>
+                <MenuItem
+                    onClick={() => window.open('https://www.linkedin.com/in/arnold-esquivel-41a5a9172/', '_blank')}
+                    className={styles.menu_item}
+                >
                     <LinkedInIcon className={styles.icon} sx={{ color: '#126bc4' }} />
                     LinkedIn
                 </MenuItem>
-                <MenuItem onClick={handleClose} className={styles.menu_item}>
+                <MenuItem
+                    onClick={() => window.open('https://wa.link/c0rp9b', '_blank')}
+                    className={styles.menu_item}
+                >
                     <WhatsAppIcon className={styles.icon} sx={{ color: '#0bc141' }} />
                     WhatsApp
                 </MenuItem>

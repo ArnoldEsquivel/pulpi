@@ -35,3 +35,7 @@ export interface TransactionFilter {
 export interface TableTransactionsProps {
     transactions: ITransaction[];
 }
+
+export interface ModalTransactionProps {
+    transaction: ITransaction;
+}

@@ -10,3 +10,11 @@
         }
     }
 }
+
+.button {
+    color: #4e488f !important;
+
+    &:hover {
+        background-color: #6c65b941 !important;
+    }
+}

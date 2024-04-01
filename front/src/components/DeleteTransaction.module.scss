@@ -1,0 +1,37 @@
+@import "../styles/variables.scss";
+
+.paper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    // width: 400px;
+    background-color: #f9f9f9;
+    box-shadow: 24;
+    padding: 1.5rem;
+    border-radius: 12px;
+
+    h2 {
+        margin: 0 0 2rem 0;
+        text-align: center;
+        color: $color-primary;
+    }
+
+    .form {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .buttons {
+        margin-top: 2rem;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        justify-content: space-around;
+    }
+}

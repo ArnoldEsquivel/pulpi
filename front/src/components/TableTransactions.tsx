@@ -1,6 +1,8 @@
 import styles from './TableTransactions.module.scss';
 import React from 'react';
 import { TableTransactionsProps } from '../utils/interfaces';
+import EditTransaction from './EditTransaction';
+import DeleteTransaction from './DeleteTransaction';
 import {
     Table,
     TableBody,
@@ -30,17 +32,19 @@ const TablaTransacciones: React.FC<TableTransactionsProps> = ({ transactions }) 
                         <TableCell align="left" className={styles.header_table}>
                             Estatus
                         </TableCell>
-                        <TableCell align="left" className={styles.header_table}>
+                        <TableCell align="center" className={styles.header_table}>
                             Monto
                         </TableCell>
-                        <TableCell align="left" className={styles.header_table}>
+                        <TableCell align="center" className={styles.header_table}>
                             Comisión
+                        </TableCell>
+                        <TableCell align="left" className={styles.header_table}>
                         </TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {transactions.map((transaction) => (
-                        <TableRow key={transaction.id}>
+                        <TableRow key={transaction.id} sx={transaction.deletedAt !== null ? { backgroundColor: 'rgba(255, 0, 0, 0.060)' } : {}}>
                             <TableCell component="th" scope="row">
                                 {transaction.id}
                             </TableCell>
@@ -56,11 +60,15 @@ const TablaTransacciones: React.FC<TableTransactionsProps> = ({ transactions }) 
                             <TableCell align="left">
                                 {transaction.status}
                             </TableCell>
-                            <TableCell align="left">
+                            <TableCell align="center">
                                 {transaction.amount}
                             </TableCell>
-                            <TableCell align="left">
+                            <TableCell align="center">
                                 {transaction.commission}
+                            </TableCell>
+                            <TableCell sx={{ padding: '0', width: '5rem' }}>
+                                <EditTransaction transaction={transaction} />
+                                <DeleteTransaction transaction={transaction} />
                             </TableCell>
                         </TableRow>
                     ))}

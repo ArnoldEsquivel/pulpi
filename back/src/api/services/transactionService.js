@@ -6,7 +6,6 @@ exports.getAll = async (filters) => {
     // Here we define the query options
     let queryOptions = {
         where: {},
-        paranoid: filters.includeDeleted ? false : true,
     };
 
     // On this IF we add the filters to the query options if they are present
@@ -19,6 +18,7 @@ exports.getAll = async (filters) => {
     if (filters.rfc) queryOptions.where.rfc = { [Op.like]: `%${filters.rfc}%` };
     if (filters.invoice) queryOptions.where.invoice = { [Op.like]: `%${filters.invoice}%` };
     if (filters.status) queryOptions.where.status = filters.status;
+    if (filters.includeDeleted == 'true') queryOptions.paranoid = false;
 
     const transactions = await Transaction.findAll(queryOptions);
     return transactions;

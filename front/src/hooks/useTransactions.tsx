@@ -8,7 +8,7 @@ const useTransactions = (filters?: TransactionFilter) => {
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<Error | null>(null);
 
-    // Here we create a debounced to avoid making a request every time the user types something
+    // Here we create a debounce to avoid making a request every time the user types something
     const debouncedFetchTransactions = useCallback(debounce(async (filters: TransactionFilter) => {
         setLoading(true);
         try {
