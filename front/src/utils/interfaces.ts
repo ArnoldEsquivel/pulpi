@@ -9,6 +9,12 @@ export interface IUser {
     deletedAt: Date | string | null;
 }
 
+export interface UserSelect {
+    id: number;
+    rfc: string;
+    name: string;
+    status: 'ACTIVE' | 'LOCKED';
+}
 export interface ITransaction {
     id: number;
     user_id: number;

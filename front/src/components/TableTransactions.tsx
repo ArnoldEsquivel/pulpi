@@ -3,6 +3,7 @@ import React from 'react';
 import { TableTransactionsProps } from '../utils/interfaces';
 import EditTransaction from './EditTransaction';
 import DeleteTransaction from './DeleteTransaction';
+import CreateTransaction from './CreateTransaction';
 import {
     Table,
     TableBody,
@@ -19,7 +20,9 @@ const TablaTransacciones: React.FC<TableTransactionsProps> = ({ transactions }) 
             <Table aria-label="tabla de transacciones">
                 <TableHead>
                     <TableRow>
-                        <TableCell sx={{ width: "1rem" }} className={styles.header_table}></TableCell>
+                        <TableCell sx={{ width: "1rem" }} className={styles.header_table}>
+                            <CreateTransaction />
+                        </TableCell>
                         <TableCell align="left" className={styles.header_table}>
                             RFC
                         </TableCell>
@@ -43,10 +46,10 @@ const TablaTransacciones: React.FC<TableTransactionsProps> = ({ transactions }) 
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {transactions.map((transaction) => (
-                        <TableRow key={transaction.id} sx={transaction.deletedAt !== null ? { backgroundColor: 'rgba(255, 0, 0, 0.060)' } : {}}>
-                            <TableCell component="th" scope="row">
-                                {transaction.id}
+                    {transactions.map((transaction, index) => (
+                        <TableRow key={index}>
+                            <TableCell component="th" scope="row" align="center">
+                                {index + 1}
                             </TableCell>
                             <TableCell align="left">
                                 {transaction.rfc}
@@ -67,8 +70,14 @@ const TablaTransacciones: React.FC<TableTransactionsProps> = ({ transactions }) 
                                 {transaction.commission}
                             </TableCell>
                             <TableCell sx={{ padding: '0', width: '5rem' }}>
-                                <EditTransaction transaction={transaction} />
-                                <DeleteTransaction transaction={transaction} />
+                                {
+                                    transaction.deletedAt
+                                        ? <span style={{ color: "red" }}>Eliminado</span>
+                                        : <>
+                                            <EditTransaction transaction={transaction} />
+                                            <DeleteTransaction transaction={transaction} />
+                                        </>
+                                }
                             </TableCell>
                         </TableRow>
                     ))}

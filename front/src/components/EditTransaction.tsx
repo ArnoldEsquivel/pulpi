@@ -55,7 +55,7 @@ const EditTransaction: React.FC<ModalTransactionProps> = ({ transaction }) => {
                 <IconButton
                     onClick={handleOpen}
                     color='success'
-                    disabled={transaction.status === 'COMPLETED' || transaction.deletedAt !== null}
+                    disabled={transaction.status === 'COMPLETED'}
                 >
                     <EditIcon />
                 </IconButton>
