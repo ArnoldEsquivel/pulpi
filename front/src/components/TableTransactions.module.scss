@@ -1,0 +1,9 @@
+@import "../styles/variables.scss";
+
+.header_table {
+    padding-top: .6rem !important;
+    padding-bottom: .6rem !important;
+    background-color: rgba($color-primary, .09);
+    font-weight: bold !important;
+    color: $color-primary !important;
+}

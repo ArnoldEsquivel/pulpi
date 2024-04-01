@@ -1,5 +1,5 @@
 paths:
-  /users:
+  /api/users:
     get:
       summary: Retrieve all users
       tags: [Users]
@@ -13,7 +13,7 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/User"
-  /users/transactions:
+  /api/users/transactions:
     get:
       summary: Retrieve users for transactions filtering
       tags: [Users]
@@ -41,7 +41,7 @@ paths:
                       type: string
                       enum: [ACTIVE, LOCKED]
                       description: The status of the user, can be active or locked.
-  /transactions:
+  /api/transactions:
     get:
       summary: Retrieve all transactions with optional filters
       tags: [Transactions]
@@ -111,7 +111,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Transaction"
-  /transactions/{id}:
+  /api/transactions/{id}:
     patch:
       summary: Update an existing transaction
       tags: [Transactions]

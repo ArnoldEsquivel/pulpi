@@ -1,0 +1,76 @@
+@import "../styles/variables.scss";
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
+    grid-gap: 1rem;
+    grid-template-areas:
+        "title"
+        "filter"
+        "transactions";
+
+    .title {
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+        grid-area: title;
+
+        h2 {
+            text-align: left;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: $color-primary;
+            margin: 1rem 0 0 0;
+        }
+    }
+
+    .filter {
+        grid-area: filter;
+        width: 100%;
+        max-width: 1200px;
+        justify-self: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        // height: auto;
+
+        .text_field {
+            color: $color-primary;
+        }
+
+        .switch {
+            color: $color-primary;
+            align-self: center;
+
+            span {
+                font-weight: bold;
+                font-size: .8rem;
+            }
+        }
+    }
+
+    .table_container {
+        grid-area: transactions;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background-color: #f6f7fc;
+
+        .table {
+            width: 100%;
+            max-width: 1200px;
+            margin: 2rem 0;
+
+            p {
+                color: $color-primary;
+                font-size: 1.5rem;
+                font-weight: bold;
+                text-align: center;
+            }
+        }
+    }
+}

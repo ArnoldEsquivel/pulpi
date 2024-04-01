@@ -16,8 +16,8 @@ exports.getAll = async (filters) => {
         };
     }
 
-    if (filters.rfc) queryOptions.where.rfc = filters.rfc;
-    if (filters.invoice) queryOptions.where.invoice = filters.invoice;
+    if (filters.rfc) queryOptions.where.rfc = { [Op.like]: `%${filters.rfc}%` };
+    if (filters.invoice) queryOptions.where.invoice = { [Op.like]: `%${filters.invoice}%` };
     if (filters.status) queryOptions.where.status = filters.status;
 
     const transactions = await Transaction.findAll(queryOptions);
